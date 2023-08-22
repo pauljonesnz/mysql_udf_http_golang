@@ -192,15 +192,15 @@ func httpRaw(method string, url string, contentType string, body string, options
 }
 
 //export http_raw_init
-func http_raw_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.my_bool {
+func http_raw_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count < 3 {
 		msg := `
 		http_raw(method string, url string, body string, option ...string) requires method, url, body argment
 		` + optionDescription
 		C.strcpy(message, C.CString(msg))
-		return 1
+		return true
 	}
-	return 0
+	return false
 }
 
 //export http_raw
@@ -237,16 +237,16 @@ func http_raw(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *uint
 }
 
 //export http_get_init
-func http_get_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.my_bool {
+func http_get_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count == 0 {
 		msg := `
 		http_get(url string, option ...string) requires url argment
 		` + optionDescription
 		C.strcpy(message, C.CString(msg))
-		return 1
+		return true
 	}
 
-	return 0
+	return false
 }
 
 //export http_get
@@ -273,15 +273,15 @@ func http_get(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *uint
 }
 
 //export http_post_init
-func http_post_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.my_bool {
+func http_post_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count < 3 {
 		msg := `
 		http_post(url string, contentType string, body string, option ...string) requires url, contentType, body argment
 		` + optionDescription
 		C.strcpy(message, C.CString(msg))
-		return 1
+		return true
 	}
-	return 0
+	return false
 }
 
 //export http_post
@@ -308,8 +308,8 @@ func http_post(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *uin
 }
 
 //export http_help_init
-func http_help_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.my_bool {
-	return 0
+func http_help_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
+	return false
 }
 
 //export http_help
