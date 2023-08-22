@@ -8,6 +8,8 @@ Call RESTful API on query.
 **August 2023 - MySql 8 Compatible:** I've updated the xxx_init return variable type so that it is compatible with MySql 8.  The long error messages, produced by the original script, were causing the server
 to crash instead of displaying an error message when the functions were used incorrectly - I've updated those so they no longer cause a crash.
 
+Note: Not tested in MariaDB - only in MySQL
+
 Setup 
 ---
 - **Clone Source**
