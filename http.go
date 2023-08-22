@@ -195,8 +195,8 @@ func httpRaw(method string, url string, contentType string, body string, options
 func http_raw_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count < 3 {
 		msg := `
-		http_raw(method string, url string, body string, option ...string) requires method, url, body argment
-		` + optionDescription
+		Invalid args. Use like: http_raw(method string, url string, body string, option ...string) requires method, url, body argment
+		`
 		C.strcpy(message, C.CString(msg))
 		return true
 	}
@@ -240,8 +240,8 @@ func http_raw(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *uint
 func http_get_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count == 0 {
 		msg := `
-		http_get(url string, option ...string) requires url argment
-		` + optionDescription
+		Invalid args. Use like: http_get(url string, option ...string) requires url argment
+		`
 		C.strcpy(message, C.CString(msg))
 		return true
 	}
@@ -276,8 +276,8 @@ func http_get(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *uint
 func http_post_init(initid *C.UDF_INIT, args *C.UDF_ARGS, message *C.char) C.bool {
 	if args.arg_count < 3 {
 		msg := `
-		http_post(url string, contentType string, body string, option ...string) requires url, contentType, body argment
-		` + optionDescription
+		Invalid args. Use like: http_post(url string, contentType string, body string, option ...string) requires url, contentType, body argment
+		`
 		C.strcpy(message, C.CString(msg))
 		return true
 	}
